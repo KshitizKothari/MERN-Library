@@ -2,7 +2,7 @@ var express = require('express');
 var app=express();
 var bodyParser=require('body-parser');
 const mongoose = require('mongoose');
-// var cors=require('cors');
+
 
 
 var db= mongoose.connect("mongodb://localhost:27017/library");
@@ -14,7 +14,7 @@ var ObjectId = mongoose.Types.ObjectId;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-// app.use(cors());
+
 
 
 app.delete('/book/delete', function(req,res){
@@ -119,29 +119,6 @@ app.put('/shelves/book/add', function(request, response){
     });
 });
 
-
-
-
-// app.put('/book/update', function(request, response){
-//     // Book.findOne({_id: request.body.bookId}, function(err,book){
-//     //     if(err){
-//     //         response.status(500).send({error:"Could not find the book you are looking for"});
-//     //     }
-//     //     else{
-//             // console.log(book.title);
-//             Book.updateOne({_id: request.body.bookId}, 
-//                  {$set: { title:request.body.title, author: request.body.author,price:request.body.price, genre:request.body.genre}}, 
-//                 function(err, book){
-//                 if(err){
-//                     response.status(500).send({error:"Could not add the book."});
-//                 }
-//                 else{
-//                     response.send(book);
-//                 }
-//             });
-//     //     }
-//     // });
-// });
 
 
 app.put('/book/update',(req,res)=>{
